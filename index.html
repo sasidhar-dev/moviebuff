@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieBuff</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div id="login-page" class="page active">
+    <div class="login-bg">
+      <div class="film-strip top"></div>
+      <div class="film-strip bottom"></div>
+      <div class="login-card">
+        <div class="brand-logo">
+          <i class="fas fa-clapperboard"></i>
+          <h1>Movie<span>Buff</span></h1>
+        </div>
+        <p class="tagline">Your ultimate cinema companion</p>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label>Username</label>
+            <div class="input-box">
+              <i class="fas fa-user"></i>
+              <input type="text" id="username" placeholder="Enter username" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="input-box">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="password" placeholder="Enter password">
+              <i class="fas fa-eye eye-toggle" id="eye-toggle"></i>
+            </div>
+          </div>
+          <div id="login-error" class="login-error hidden">
+            <i class="fas fa-circle-exclamation"></i> Invalid credentials. Please try again.
+          </div>
+          <button type="submit" class="btn-signin">
+            <span>Sign In</span><i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
+        <div class="hint-box">
+          <i class="fas fa-circle-info"></i>
+          <span>Demo &mdash; Username: <b>moviebuff</b> &nbsp;|&nbsp; Password: <b>cinema123</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="home-page" class="page hidden">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="nav-brand">
+        <i class="fas fa-clapperboard"></i>
+        <span>Movie<strong>Buff</strong></span>
+      </div>
+      <div class="nav-search-wrap">
+        <i class="fas fa-magnifying-glass"></i>
+        <input type="text" id="search-input" placeholder="Search movies, genres...">
+        <button id="clear-btn" class="clear-btn hidden"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="nav-actions">
+        <select id="genre-filter" class="select-pill">
+          <option value="all">All Genres</option>
+          <option value="Action">Action</option>
+          <option value="Drama">Drama</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Crime">Crime</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Animation">Animation</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Horror">Horror</option>
+        </select>
+        <div class="avatar-wrap">
+          <div class="avatar"><i class="fas fa-user"></i></div>
+          <span class="nav-user" id="nav-user">moviebuff</span>
+          <button id="logout-btn" class="btn-logout" title="Logout">
+            <i class="fas fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <div class="hero">
+      <div class="hero-text">
+        <p class="hero-sub">Welcome back, <span id="hero-user">moviebuff</span> 🎬</p>
+        <h2>Discover <em>Top-Rated</em> Movies</h2>
+        <p class="hero-desc">Browse curated films, check ratings, and find where to stream them tonight.</p>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><i class="fas fa-film"></i><div><strong id="stat-total">20</strong><small>Movies</small></div></div>
+        <div class="stat-card"><i class="fas fa-star"></i><div><strong>8.3</strong><small>Avg Rating</small></div></div>
+        <div class="stat-card"><i class="fas fa-tv"></i><div><strong>8</strong><small>Platforms</small></div></div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-wrap">
+      <div class="toolbar">
+        <span id="results-label">Showing <b>20</b> movies</span>
+        <select id="sort-select" class="select-pill">
+          <option value="default">Sort: Featured</option>
+          <option value="rating-high">Rating ↓</option>
+          <option value="rating-low">Rating ↑</option>
+          <option value="year-new">Newest First</option>
+          <option value="year-old">Oldest First</option>
+          <option value="az">A → Z</option>
+        </select>
+      </div>
+
+      <div id="movie-grid" class="movie-grid"></div>
+
+      <div id="no-results" class="no-results hidden">
+        <i class="fas fa-face-sad-tear"></i>
+        <h3>No results found</h3>
+        <p>Try searching with different keywords or clearing filters.</p>
+        <button id="reset-btn" class="btn-reset">Clear Filters</button>
+      </div>
+
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+  </div>
+
+  <!-- Movie Detail Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close"><i class="fas fa-xmark"></i></button>
+      <div id="modal-inner"></div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
